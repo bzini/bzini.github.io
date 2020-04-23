@@ -26,8 +26,19 @@
 <meta property="og:image" content="http://yoursite.com/git_pic/gitUpdate-index.png">
 <meta property="og:image" content="http://yoursite.com/git_pic/gitWrite-tree.png">
 <meta property="og:image" content="http://yoursite.com/git_pic/gitCommitTree.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitAdd.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitCommit.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitStatus1.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitStatus2.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitStatus3.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitStatus4.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitDiff.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitDiff--cached.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitLog.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitLog1.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitLog2.png">
 <meta property="article:published_time" content="2020-04-22T01:53:48.996Z">
-<meta property="article:modified_time" content="2020-04-22T15:02:44.273Z">
+<meta property="article:modified_time" content="2020-04-23T05:22:38.222Z">
 <meta property="article:author" content="Bzini Ler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/git_pic/gitDownloaded.png">
@@ -247,9 +258,9 @@
 <img src="\git_pic\gitLs-files.png">
 </blockquote>
 </li>
-<li><p>git update-index –add –cacheinfo 10064 e7be9a58835f21e724fca73a6860b1fda1f208f9 text.txt</p>
+<li><p>git update-index –add –cacheinfo 10064 d4d820f31f39d912b67c2f93a19d248f70a5daf7 hello.txt</p>
 <blockquote>
-<p>将text.txt创建一个缓冲区，将e7be9a58835f21e724fca73a6860b1fda1f208f9于text.txt对应,生成一个树对象</p>
+<p>将text.txt创建一个缓冲区，将d4d820f31f39d912b67c2f93a19d248f70a5daf7于text.txt对应</p>
 <ol>
 <li><strong>–add：</strong>此前该文件没有缓存区，–add创建缓存区</li>
 <li><strong>–cacheinfo：</strong>指定要添加的文件位于git数据库中，而不是当前目录</li>
@@ -260,7 +271,7 @@
 </li>
 <li><p>git write-tree</p>
 <blockquote>
-<p>将缓存区中的数据保存到git数据库中</p>
+<p>将缓存区中的数据保存到git数据库中,并生成树对象</p>
 <img src="\git_pic\gitWrite-tree.png">
 </blockquote>
 </li>
@@ -271,6 +282,59 @@
 <li>“this is my first commit”：设置提交的备注</li>
 </ol>
 <img src="\git_pic\gitCommitTree.png">
+</blockquote>
+</li>
+</ol>
+<h3 id="git高级命令"><a href="#git高级命令" class="headerlink" title="git高级命令"></a>git高级命令</h3><ol>
+<li><p>git add hello.txt</p>
+<blockquote>
+<p>跟踪hello.txt文件,相当于将hello.txt文件转成git对象保存到git数据库并添加到缓存区</p>
+<img src="\git_pic\gitAdd.png">
+</blockquote>
+</li>
+<li><p>git commit -m “hello 的第一个版本”</p>
+<blockquote>
+<p>将缓存区的数据提交写成tree对象并将tree对象提交，生成commit对象</p>
+<ol>
+<li><strong>-a：</strong>跳过缓存区直接提交<img src="\git_pic\gitCommit.png">
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p>git status world.txt</p>
+<blockquote>
+<p>查看文件的状态,</p>
+<ol>
+<li>文件状态分为<strong>未跟踪</strong>、<strong>已跟踪</strong>两种状态</li>
+<li><strong>已跟踪</strong>又分为<strong>已暂存</strong>、<strong>已修改</strong>、<strong>已提交</strong>三种状态</li>
+<li>未跟踪状态<img src="\git_pic\gitStatus1.png"></li>
+<li>跟踪已暂存<img src="\git_pic\gitStatus2.png"></li>
+<li>跟踪已提交<br/><img src="\git_pic\gitStatus3.png"></li>
+<li>跟踪已修改<img src="\git_pic\gitStatus4.png">
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p>git diff</p>
+<blockquote>
+<p>查看修改内容</p>
+<ol>
+<li>不加参数，查看做了哪些更新没有暂存<img src="\git_pic\gitDiff.png"></li>
+<li><strong>–cached、–staged（1.6.1版本以上）：</strong>查看更新并添加到缓存准备提交<img src="\git_pic\gitDiff--cached.png">
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p>git log</p>
+<blockquote>
+<p>查看日志显示提交记录</p>
+<ol>
+<li><strong>–pretty=online：</strong>数据一行显示</li>
+<li><strong>–online：</strong>一行哈希部分显示<br/><img src="\git_pic\gitLog.png" width="50%">
+<img src="\git_pic\gitLog1.png" width="50%">
+<img src="\git_pic\gitLog2.png" width="50%">
+</li>
+</ol>
 </blockquote>
 </li>
 </ol>
