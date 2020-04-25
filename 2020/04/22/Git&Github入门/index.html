@@ -50,8 +50,19 @@
 <meta property="og:image" content="http://yoursite.com/git_pic/gitMerge2.png">
 <meta property="og:image" content="http://yoursite.com/git_pic/gitMerge3.png">
 <meta property="og:image" content="http://yoursite.com/git_pic/gitBranch-D.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitStash.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitStash_List.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitStash_Pop.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitCheckout--file.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitResetHead.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitCommit--amend.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitReset--soft.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitReset--mixed.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitReset--hard.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitTag+.png">
+<meta property="og:image" content="http://yoursite.com/git_pic/gitTag-d.png">
 <meta property="article:published_time" content="2020-04-22T01:53:48.996Z">
-<meta property="article:modified_time" content="2020-04-24T09:43:14.320Z">
+<meta property="article:modified_time" content="2020-04-25T15:20:36.363Z">
 <meta property="article:author" content="Bzini Ler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/git_pic/gitDownloaded.png">
@@ -208,7 +219,7 @@
       
         <p>Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目</p>
 <a id="more"></a>
-
+<p><strong>Tips</strong>：以下命令均在Git 2.24.0版本</p>
 <h3 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装                                                     "></a>Git安装                                                     <!--Git安装--></h3><ol>
 <li><p>官网安装路径</p>
 <blockquote>
@@ -233,6 +244,11 @@
 <li>git config –list<img src="\git_pic\gitConfiged.png">
 </li>
 </ul>
+</blockquote>
+</li>
+<li><p>git的特点</p>
+<blockquote>
+<p>直接记录快照，而非差异比较<br>近乎所有操作都是本地执行<br>时刻保证数据完整性<br>多数操作仅添加数据<br>文件的三种状态（已提交、已修改、已暂存）</p>
 </blockquote>
 </li>
 </ol>
@@ -410,7 +426,99 @@
 <li><p>git branch -D huilaidamo</p>
 <blockquote>
 <p>强制删除分支</p>
-<img src="\git_pic\gitBranch-D.png" width="50%"></blockquote>
+<img src="\git_pic\gitBranch-D.png" width="50%">
+</blockquote>
+</li>
+</ol>
+<h3 id="git储存"><a href="#git储存" class="headerlink" title="git储存"></a>git储存</h3><p>有紧急工作需要处理时，需要保存当前的工作但不提交，就可以将当前工作储存于stash存储区</p>
+<ol>
+<li><p>git stash</p>
+<blockquote>
+<p>将当前工作保存<br/></p>
+<img src="\git_pic\gitStash.png" width="50%">
+</blockquote>
+</li>
+<li><p>git stash list</p>
+<blockquote>
+<p>查看储存区内容<br/></p>
+<img src="\git_pic\gitStash_List.png" width="50%">
+</blockquote>
+</li>
+<li><p>git stash pop</p>
+<blockquote>
+<p>取出储存区栈最上面的记录并删除<br/></p>
+<img src="\git_pic\gitStash_Pop.png" width="50%">
+</blockquote>
+</li>
+<li><p>git stash apply</p>
+<blockquote>
+<p>取出记录但没储存区中删除<br/></p>
+</blockquote>
+</li>
+<li><p>git stash drop</p>
+<blockquote>
+<p>删除存储区栈最上面的记录</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="后悔药"><a href="#后悔药" class="headerlink" title="后悔药                                          "></a>后悔药                                          <!--撤销操作--></h3><p>撤销编辑的内容、撤销暂存、修改提交的注释</p>
+<ol>
+<li><p>git checkout – b.txt</p>
+<blockquote>
+<p>撤销工作区的修改，<strong>git restore b.txt</strong>也可实现</p>
+<img src="\git_pic\gitCheckout--file.png" width="70%">
+</blockquote>
+</li>
+<li><p>git reset HEAD b.txt</p>
+<blockquote>
+<p>撤销暂存操作,相当于撤销当前的git add操作</p>
+<img src="\git_pic\gitResetHead.png" width="80%">
+</blockquote>
+</li>
+<li><p>git commit –amend</p>
+<blockquote>
+<p>修改提交时的注释</p>
+<img src="\git_pic\gitCommit--amend.png" width="70%">
+</blockquote>
+</li>
+</ol>
+<h3 id="reset三部曲"><a href="#reset三部曲" class="headerlink" title="reset三部曲"></a>reset三部曲</h3><ol>
+<li><p>git reset –soft e2d26a2</p>
+<blockquote>
+<p>修改HEAD的指向，缓存区不变，工作区不变<br>哈希值换为：<strong>HEAD~</strong> 表示指向上一次提交</p>
+<img src="\git_pic\gitReset--soft.png" width="70%">
+</blockquote>
+</li>
+<li><p>git reset –mixed HEAD~</p>
+<blockquote>
+<p>将HEAD指向上一次提交，缓存区回退</p>
+<img src="\git_pic\gitReset--mixed.png" width="70%">
+</blockquote>
+</li>
+<li><p>git reset –hard HEAD~</p>
+<blockquote>
+<p>将HEAD指向上一次提交，缓存区回退,工作区回退</p>
+<img src="\git_pic\gitReset--hard.png" width="70%">
+</blockquote>
+</li>
+</ol>
+<h3 id="tag标签"><a href="#tag标签" class="headerlink" title="tag标签"></a>tag标签</h3><ol>
+<li><p>git tag -l</p>
+<blockquote>
+<p>查看标签,-l可加可不加</p>
+</blockquote>
+</li>
+<li><p>git tag tag1</p>
+<blockquote>
+<p>在当前HEAD指向的提交对象添加标签</p>
+<img src="\git_pic\gitTag+.png">
+</blockquote>
+</li>
+<li><p>git tag -d tag1</p>
+<blockquote>
+<p>删除标签</p>
+<img src="\git_pic\gitTag-d.png">
+</blockquote>
 </li>
 </ol>
 
