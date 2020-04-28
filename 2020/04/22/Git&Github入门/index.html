@@ -81,7 +81,7 @@
 <meta property="og:image" content="http://yoursite.com/git_pic/ssh03.png">
 <meta property="og:image" content="http://yoursite.com/git_pic/ssh04.png">
 <meta property="article:published_time" content="2020-04-22T01:53:48.996Z">
-<meta property="article:modified_time" content="2020-04-27T15:43:30.449Z">
+<meta property="article:modified_time" content="2020-04-28T01:32:48.588Z">
 <meta property="article:author" content="Bzini Ler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/git_pic/gitDownloaded.png">
@@ -312,8 +312,8 @@
 <blockquote>
 <p>将text.txt创建一个缓冲区，将d4d820f31f39d912b67c2f93a19d248f70a5daf7于text.txt对应</p>
 <ol>
-<li><strong>–add：</strong>此前该文件没有缓存区，–add创建缓存区</li>
-<li><strong>–cacheinfo：</strong>指定要添加的文件位于git数据库中，而不是当前目录</li>
+<li><strong>- -add：</strong>此前该文件没有缓存区，–add创建缓存区</li>
+<li><strong>- -cacheinfo：</strong>指定要添加的文件位于git数据库中，而不是当前目录</li>
 <li><strong>文件模式</strong><br>100644:普通文件<br>100755:可执行文件<br>120000:符号链接</li>
 </ol>
 <img src="\git_pic\gitUpdate-index.png">
@@ -346,7 +346,7 @@
 <blockquote>
 <p>将缓存区的数据提交写成tree对象并将tree对象提交，生成commit对象</p>
 <ol>
-<li><strong>-a：</strong>跳过缓存区直接提交<img src="\git_pic\gitCommit.png">
+<li><strong>-a：</strong>跳过缓存区直接提交<br/><img src="\git_pic\gitCommit.png">
 </li>
 </ol>
 </blockquote>
@@ -380,9 +380,9 @@
 <p>查看日志显示提交记录</p>
 <ol>
 <li><strong>–pretty=online：</strong>数据一行显示</li>
-<li><strong>–online：</strong>一行哈希部分显示<br/><img src="\git_pic\gitLog.png" width="50%">
-<img src="\git_pic\gitLog1.png" width="50%">
-<img src="\git_pic\gitLog2.png" width="50%">
+<li><strong>–online：</strong>一行哈希部分显示<br/><img src="\git_pic\gitLog.png" width="70%">
+<img src="\git_pic\gitLog1.png" width="70%">
+<img src="\git_pic\gitLog2.png" width="70%">
 </li>
 </ol>
 </blockquote>
@@ -417,7 +417,7 @@
 <blockquote>
 <p>切换指针指向的分支</p>
 <ol>
-<li><strong>注意</strong>：没一次切换分支前，当前分支一定得是干净得（即已经提交的）</li>
+<li><strong>注意</strong>：每一次切换分支前，当前分支一定得是干净得（即已经提交的）</li>
 <li><strong>坑</strong>：在切换分支时，如果当前分支有为缓存的修改（第一次），未提交的缓存（第一次），分支虽然可以切换成功，但会污染其他分支</li>
 <li><strong>切换分支会改变的地方</strong>：HEAD的指向、暂存区、工作目录</li>
 </ol>
@@ -484,7 +484,7 @@
 </ol>
 <h3 id="后悔药"><a href="#后悔药" class="headerlink" title="后悔药                                          "></a>后悔药                                          <!--撤销操作--></h3><p>撤销编辑的内容、撤销暂存、修改提交的注释</p>
 <ol>
-<li><p>git checkout – b.txt</p>
+<li><p>git checkout - - b.txt</p>
 <blockquote>
 <p>撤销工作区的修改，<strong>git restore b.txt</strong>也可实现</p>
 <img src="\git_pic\gitCheckout--file.png" width="70%">
@@ -589,7 +589,7 @@
 <li>用户执行<strong>git clone url</strong>后自动生成的master分支下，<br>由于该master分支会自动指向origin/master,所以相当于自动执行了<strong>git branch -u 别名/master</strong><br>所以可直接使用<strong>git push</strong>和<strong>git pull</strong></li>
 <li>新建的分支无法直接用<strong>git push</strong>和<strong>git pull</strong>，必须先使用<strong>git push 别名 分支名</strong>提交github在通过命令<strong>git branch -u 别名/分支名</strong>，<br>指定该分支指向远程跟踪分支，才可使用<strong>git push</strong>和<strong>git pull</strong></li>
 <li>在<strong>git pull</strong>之后可直接用命令<strong>git branch -b 分支名（与跟踪分支名相同） 别名/远程跟踪分支名</strong>或<strong>git branch –track 别名/远程跟踪分支名</strong>在新建分支时就指定新分支指向跟踪分支，就可直接使用<strong>git push</strong>和<strong>git pull</strong></li>
-<li>要直接使用<strong>git push</strong>要保证本地分支和远程跟踪分支<strong>同名</strong></li>
+<li><strong>注意</strong>：要直接使用<strong>git push</strong>要保证本地分支和远程跟踪分支<strong>同名</strong></li>
 </ol>
 </blockquote>
 </li>
@@ -606,8 +606,9 @@
 </blockquote>
 </li>
 </ol>
-<h3 id="第三方管理"><a href="#第三方管理" class="headerlink" title="第三方管理"></a>第三方管理</h3><ol>
-<li><p>第三方fork客户的项目</p>
+<h3 id="第三方协助开发"><a href="#第三方协助开发" class="headerlink" title="第三方协助开发"></a>第三方协助开发</h3><p>当我方对于某个功能或bug无法通过自己解决，往往需要其他高级公司来协助我们解决，这家高级的公司就是第三方公司，这是我方客户相当于第三方就是客户<br>以下图片中的客户表示我方公司</p>
+<ol>
+<li><p>第三方fork我方的项目</p>
 <blockquote>
 <p>找到项目，fork</p>
 <img src="\git_pic\gitFork.png" width="70%">
@@ -615,13 +616,13 @@
 </li>
 <li><p>git clone url</p>
 <blockquote>
-<p>第三方将项目克隆到本地修改并提交<br>第三方发出PULL</p>
+<p>第三方将项目克隆到本地修改并提交<br>第三方给客户发出New pull request将修改后的项目给我方</p>
 <img src="\git_pic\gitRequest02.png" width="70%">
 <img src="\git_pic\gitRequest03.png" width="70%">
 <img src="\git_pic\gitRequest04.png" width="70%">
 </blockquote>
 </li>
-<li><p>客户查看PULL Request</p>
+<li><p>我方查看PULL Request</p>
 <blockquote>
 <img src="\git_pic\gitRequest05.png" width="70%">
 <img src="\git_pic\gitRequest06.png" width="70%">
